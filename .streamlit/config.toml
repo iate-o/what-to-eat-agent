@@ -1,0 +1,10 @@
+[theme]
+primaryColor = "#789D00"
+backgroundColor = "#FBFDF8"
+secondaryBackgroundColor = "#F1F5EE"
+textColor = "#17211B"
+baseRadius = "medium"
+showWidgetBorder = true
+
+[server]
+headless = true

@@ -1,0 +1,12 @@
+Extract a recipe from the text below into the requested structured schema.
+
+RECIPE TEXT:
+{{recipe_text}}
+
+Rules:
+- Preserve explicit quantities and units; normalize units to g, kg, ml, l, tsp, tbsp, cup, or count where possible.
+- Never invent a precise quantity, cooking time, serving count, ingredient, or instruction that is absent.
+- Use null for missing quantities and optional metadata.
+- Normalize ingredient names to simple singular forms where clear.
+- Add a warning for incomplete or ambiguous source text.
+- Return only the structured result requested by the response schema.

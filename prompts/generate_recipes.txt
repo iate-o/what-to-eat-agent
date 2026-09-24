@@ -1,0 +1,20 @@
+Generate exactly three realistic recipe candidates for the pantry and constraints below.
+
+PANTRY (structured inventory; do not invent additional pantry items):
+{{pantry_json}}
+
+CONSTRAINTS:
+{{constraints_json}}
+
+VALIDATION FEEDBACK FROM A PREVIOUS FAILED ATTEMPT:
+{{validation_feedback}}
+
+Requirements:
+- Treat every allergy as an absolute prohibition, including obvious forms of that allergen.
+- Obey the cooking-time limit and requested diet.
+- Prefer pantry ingredients and minimize required purchases.
+- Keep optional garnishes explicitly optional; do not use them to inflate pantry use.
+- Give realistic quantities, servings, timing, and complete executable instructions.
+- Use normalized singular ingredient names where clear.
+- Do not claim exact nutrition values.
+- Return the structured recipe batch requested by the response schema.

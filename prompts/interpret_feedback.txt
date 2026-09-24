@@ -1,0 +1,10 @@
+Convert the user's requested change into the smallest structured constraint update.
+
+FEEDBACK:
+{{feedback}}
+
+Rules:
+- Do not remove allergies.
+- Only set fields clearly supported by the feedback.
+- Put qualitative preferences that do not fit another field into notes.
+- Return only the structured update requested by the response schema.

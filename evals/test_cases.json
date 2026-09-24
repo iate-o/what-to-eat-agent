@@ -1,0 +1,95 @@
+[
+  {
+    "id": "normal-pantry",
+    "type": "recommendation",
+    "pantry": "chicken breast\nrice\nspinach\nmushrooms",
+    "constraints": {"servings": 2, "max_cooking_time_minutes": 30},
+    "recipe": {"title": "Chicken rice bowl", "servings": 2, "cooking_time_minutes": 25, "ingredients": [{"name": "chicken", "normalized_name": "chicken"}, {"name": "rice", "normalized_name": "rice"}, {"name": "spinach", "normalized_name": "spinach"}], "instructions": ["Cook the rice.", "Cook the chicken through.", "Wilt spinach and serve."]},
+    "expected_valid": true
+  },
+  {
+    "id": "high-protein",
+    "type": "recommendation",
+    "pantry": "eggs\ntofu\nspinach",
+    "constraints": {"servings": 2, "max_cooking_time_minutes": 20, "dietary_preferences": ["high protein"]},
+    "recipe": {"title": "Tofu egg scramble", "servings": 2, "cooking_time_minutes": 15, "ingredients": [{"name": "tofu", "normalized_name": "tofu"}, {"name": "eggs", "normalized_name": "egg"}, {"name": "spinach", "normalized_name": "spinach"}], "instructions": ["Crumble tofu.", "Cook with eggs and spinach."]},
+    "expected_valid": true
+  },
+  {
+    "id": "vegetarian",
+    "type": "recommendation",
+    "pantry": "lentils\ntomatoes\nspinach",
+    "constraints": {"servings": 2, "max_cooking_time_minutes": 30, "dietary_preferences": ["vegetarian"]},
+    "recipe": {"title": "Tomato lentils", "servings": 2, "cooking_time_minutes": 25, "ingredients": [{"name": "lentils", "normalized_name": "lentil"}, {"name": "tomatoes", "normalized_name": "tomato"}, {"name": "spinach", "normalized_name": "spinach"}], "instructions": ["Simmer lentils and tomatoes.", "Fold in spinach."]},
+    "expected_valid": true
+  },
+  {
+    "id": "vegan-violation",
+    "type": "recommendation",
+    "pantry": "chickpeas\nspinach\nbutter",
+    "constraints": {"servings": 2, "max_cooking_time_minutes": 25, "dietary_preferences": ["vegan"]},
+    "recipe": {"title": "Buttery chickpeas", "servings": 2, "cooking_time_minutes": 20, "ingredients": [{"name": "chickpeas", "normalized_name": "chickpea"}, {"name": "butter", "normalized_name": "butter"}], "instructions": ["Cook together."]},
+    "expected_valid": false
+  },
+  {
+    "id": "keto-violation",
+    "type": "recommendation",
+    "pantry": "chicken breast\nrice\nbroccoli",
+    "constraints": {"servings": 2, "max_cooking_time_minutes": 30, "dietary_preferences": ["keto"]},
+    "recipe": {"title": "Chicken rice", "servings": 2, "cooking_time_minutes": 25, "ingredients": [{"name": "chicken", "normalized_name": "chicken"}, {"name": "rice", "normalized_name": "rice"}], "instructions": ["Cook chicken and rice."]},
+    "expected_valid": false
+  },
+  {
+    "id": "peanut-allergy",
+    "type": "recommendation",
+    "pantry": "tofu\nnoodles\npeanut oil",
+    "constraints": {"servings": 2, "max_cooking_time_minutes": 20, "allergies": ["peanut"]},
+    "recipe": {"title": "Peanut noodles", "servings": 2, "cooking_time_minutes": 15, "ingredients": [{"name": "tofu", "normalized_name": "tofu"}, {"name": "peanut oil", "normalized_name": "peanut oil"}], "instructions": ["Cook and toss."]},
+    "expected_valid": false
+  },
+  {
+    "id": "multiple-allergies",
+    "type": "recommendation",
+    "pantry": "pasta\ncream\nshrimp",
+    "constraints": {"servings": 2, "max_cooking_time_minutes": 30, "allergies": ["dairy", "shrimp"]},
+    "recipe": {"title": "Creamy shrimp pasta", "servings": 2, "cooking_time_minutes": 25, "ingredients": [{"name": "shrimp", "normalized_name": "shrimp"}, {"name": "cream", "normalized_name": "cream"}, {"name": "pasta", "normalized_name": "pasta"}], "instructions": ["Cook pasta and sauce."]},
+    "expected_valid": false
+  },
+  {
+    "id": "very-short-time",
+    "type": "recommendation",
+    "pantry": "eggs\nspinach",
+    "constraints": {"servings": 2, "max_cooking_time_minutes": 10},
+    "recipe": {"title": "Slow omelette", "servings": 2, "cooking_time_minutes": 20, "ingredients": [{"name": "eggs", "normalized_name": "egg"}, {"name": "spinach", "normalized_name": "spinach"}], "instructions": ["Cook slowly."]},
+    "expected_valid": false
+  },
+  {
+    "id": "sparse-pantry",
+    "type": "recommendation",
+    "pantry": "rice",
+    "constraints": {"servings": 2, "max_cooking_time_minutes": 30},
+    "recipe": {"title": "Loaded rice", "servings": 2, "cooking_time_minutes": 25, "ingredients": [{"name": "rice", "normalized_name": "rice"}, {"name": "chicken", "normalized_name": "chicken"}, {"name": "capsicum", "normalized_name": "capsicum"}, {"name": "avocado", "normalized_name": "avocado"}, {"name": "beans", "normalized_name": "bean"}], "instructions": ["Cook and combine."]},
+    "expected_valid": false
+  },
+  {
+    "id": "shopping-list",
+    "type": "shopping",
+    "pantry": "300g chicken breast\n4 eggs\n200g spinach",
+    "ingredients": [{"name": "chicken", "normalized_name": "chicken", "quantity": 500, "unit": "g"}, {"name": "eggs", "normalized_name": "egg", "quantity": 2, "unit": "count"}, {"name": "spinach", "normalized_name": "spinach", "quantity": 200, "unit": "g"}, {"name": "onion", "normalized_name": "onion", "quantity": 1, "unit": "count"}],
+    "expected_missing": ["chicken", "onion"]
+  },
+  {
+    "id": "alias-matching",
+    "type": "shopping",
+    "pantry": "spring onions\nbell pepper",
+    "ingredients": [{"name": "scallions", "normalized_name": "scallion"}, {"name": "capsicum", "normalized_name": "capsicum"}, {"name": "lime", "normalized_name": "lime"}],
+    "expected_missing": ["lime"]
+  },
+  {
+    "id": "missing-quantity",
+    "type": "shopping",
+    "pantry": "rice\ncream",
+    "ingredients": [{"name": "rice", "normalized_name": "rice", "quantity": 200, "unit": "g"}, {"name": "cream", "normalized_name": "cream", "quantity": 100, "unit": "ml"}],
+    "expected_missing": []
+  }
+]
