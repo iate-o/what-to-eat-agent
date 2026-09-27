@@ -1,0 +1,19 @@
+{
+  "summary": {
+    "cases": 12,
+    "recipe_validity_accuracy": 1.0,
+    "average_pantry_utilisation": 0.8611111111111112,
+    "average_constraint_compliance": 0.8611111111111112,
+    "average_missing_ingredient_count": 0.4444444444444444,
+    "shopping_precision": 1.0,
+    "shopping_recall": 1.0,
+    "shopping_exact_match": 1.0,
+    "failure_taxonomy": {
+      "allergy_conflict": 2,
+      "diet_conflict": 2,
+      "time_limit": 1,
+      "pantry_feasibility": 1
+    },
+    "user_satisfaction": "Not measured; requires real user feedback"
+  }
+}
