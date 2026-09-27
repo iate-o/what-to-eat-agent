@@ -1,25 +1,21 @@
 # Evaluation
 
-The fixed suite checks deterministic product behavior without making API calls. It covers normal and constrained recommendations, hard allergy checks, diet conflicts, short time limits, sparse pantries, ingredient aliases, partial quantities, and uncertain matches.
+The fixed suite evaluates deterministic product behavior separately from live model quality. It covers recipe validity, pantry utilisation, constraint compliance, missing ingredients, shopping-list accuracy, and a stable failure taxonomy.
 
-Run from the repository root:
+Run:
 
 ```bash
 python -m evals.run_evals
 ```
 
-The output reports recipe-validity accuracy, average pantry utilisation, average constraint compliance, average missing-ingredient count, shopping-list precision, recall, and exact match. The recommendation fixtures represent candidate outputs; this isolates the validator, matcher, and scorer from model variability. Evaluate live generation separately against the same cases when changing models or prompts.
+The checked-in fixture metrics are portfolio evidence for the deterministic layer only. They are not production or live-model benchmarks.
 
-Current checked-in results:
+Current fixture metrics:
 
-| Metric | Result |
-|---|---:|
-| Recipe validity accuracy | 100% |
-| Average pantry utilisation | 86.1% |
-| Average constraint compliance | 86.1% |
-| Average missing ingredient count | 0.44 |
-| Shopping precision / recall / exact match | 100% / 100% / 100% |
+- Recipe validity accuracy: 100%
+- Average pantry utilisation: 86.1%
+- Average constraint compliance: 86.1%
+- Average missing ingredient count: 0.44
+- Shopping precision / recall / exact match: 100% / 100% / 100%
 
-These are results for 12 hand-authored offline fixtures, not production or live-model benchmarks.
-
-User satisfaction is deliberately reported as unmeasured. Collect thumbs-up/down and qualitative feedback from real sessions before adding it as a benchmark.
+Failure taxonomy is reported separately so aggregate accuracy does not hide allergy, diet, time, structure, dislike, or pantry-feasibility failures.
